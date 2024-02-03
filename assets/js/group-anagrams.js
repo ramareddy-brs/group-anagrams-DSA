@@ -1,24 +1,17 @@
-var groupAnagrams = function(strs) {
-  const anagramGroups = new Map();
+function groupAnagrams() {
+  const inputArray = JSON.parse(document.getElementById('inputArray').value);
+  const groupedAnagrams = {};
 
-  for (const str of strs) {
-      // Sort the characters of the string to create a unique key
-      const sortedStr = str.split('').sort().join('');
+  inputArray.forEach(word => {
+    const sortedWord = word.split('').sort().join('');
+    if (groupedAnagrams[sortedWord]) {
+      groupedAnagrams[sortedWord].push(word);
+    } else {
+      groupedAnagrams[sortedWord] = [word];
+    }
+  });
 
-      // If the key is not in the map, create a new array
-      if (!anagramGroups.has(sortedStr)) {
-          anagramGroups.set(sortedStr, []);
-      }
+  const result = Object.values(groupedAnagrams);
 
-      // Push the current string to the array of anagrams
-      anagramGroups.get(sortedStr).push(str);
-  }
-
-  // Convert the map values to an array and return the result
-  return Array.from(anagramGroups.values());
-};
-
-
-const strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
-const result = groupAnagrams(strs);
-console.log(result);
+  document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+}

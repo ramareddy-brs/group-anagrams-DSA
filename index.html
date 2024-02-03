@@ -26,6 +26,17 @@
       <p class="text-start">
         This code uses a Map to store anagrams. It iterates through each string in the input array, sorts its characters, and uses the sorted string as a key in the map. If the key is not present, it creates a new array for that key; otherwise, it adds the current string to the existing array. Finally, it converts the map values to an array and returns the result
       </p>
+
+      <div id="input">
+        <label for="inputArray">Input Array:</label>
+        <input type="text" id="inputArray" placeholder='["eat","tea","tan","ate","nat","bat"]'>
+        <button onclick="groupAnagrams()">Group Anagrams</button>
+      </div>
+    
+      <div id="output">
+        <h3>Output:</h3>
+        <pre id="result"></pre>
+      </div>
     </main>
 
     <footer class="footer footer-dark">
